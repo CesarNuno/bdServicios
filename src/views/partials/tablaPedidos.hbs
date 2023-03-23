@@ -1,0 +1,47 @@
+{{#if pedidos}}
+
+  <table class="table table-bordered table-hover table-dark">
+
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Servicios</th>
+        <th>Direccion</th>
+        <th>Total</th>
+        <th>Estatus</th>
+        <th>Controles</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each pedidos}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{cliente}}</td>
+          <td>{{servicios}}</td>
+          <td>{{direccion}}</td>
+          <td>{{total}}</td>
+          <td>{{estatus}}</td>
+          <td>
+            {{#ifeq estatus "En Proceso"}}
+              {{#if @root.nivel}}
+                <a class="btn btn-success" href="/pedido/{{_id}}/completar">Marcar
+                  Completa</a>
+              {{/if}}
+                <a
+                  class="btn btn-danger"
+                  href="/pedido/{{_id}}/cancelar"
+                >Cancelar</a>
+            {{/ifeq}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="text-center text-white">
+      <h1>No hay pedidos</h1>
+    </div>
+  </div>
+{{/if}}

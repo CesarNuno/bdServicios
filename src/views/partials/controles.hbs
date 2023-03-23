@@ -1,0 +1,5 @@
+{{#if @root.nivel}}
+    <a class="btn btn-success" href="/pedido/{{_id}}/completar">Marcar Completa</a>
+{{else}}
+    <a class="btn btn-danger" href="/pedido/{{_id}}/cancelar">Cancelar</a>
+{{/if}}
